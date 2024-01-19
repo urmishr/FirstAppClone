@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">पहला ऐप</string>
+    <string name="hello_message">हेलो एंड्रॉइड</string>
+    <string name="button_message">मैं एक बटन हूँ</string>
+</resources>
