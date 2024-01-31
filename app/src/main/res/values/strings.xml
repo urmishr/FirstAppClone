@@ -2,4 +2,6 @@
     <string name="app_name">First App</string>
     <string name="hello_message">Hello Android</string>
     <string name="button_message">i\'m a button</string>
+    <string name="editmessage">"I\'m an EditText"</string>
+    <string name="hinttext">write something here</string>
 </resources>
