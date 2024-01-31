@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.urmish.firstapp.R;
 import com.urmish.firstapp.databinding.ActivityMainBinding;
@@ -34,11 +35,38 @@ public class MainActivity extends AppCompatActivity {
         model.editString.observe(this, s ->  {
             variableBinding.textview.setText("Your edit text is: " + s);
             });
+
+        model.isSelected.observe(this,selected -> {
+            variableBinding.checkBoxCoffee.setChecked(selected);
+            variableBinding.radioButtonCoffeeYes.setChecked(selected);
+            variableBinding.switchCoffee.setChecked(selected);
+            Toast.makeText(MainActivity.this, "The value is now: " +selected, Toast.LENGTH_SHORT).show();
+        });
+
+        variableBinding.checkBoxCoffee.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            model.isSelected.postValue(isChecked);
+        });
+
+        variableBinding.switchCoffee.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            model.isSelected.postValue(isChecked);
+        });
+
+        variableBinding.radioButtonCoffeeYes.setOnCheckedChangeListener((group, isChecekd) -> {
+            model.isSelected.postValue(isChecekd);
+        });
         variableBinding.mybutton.setOnClickListener(click ->
                 {
                     model.editString.postValue(variableBinding.myedittext.getText().toString());
 
                 });
+
+        variableBinding.myimagebutton.setOnClickListener(view -> {
+            // Get width and height
+            int width = view.getWidth();
+            int height = view.getHeight();
+            // Show a Toast message with the width and height
+            Toast.makeText(MainActivity.this, "The width = " + width + " and height = " + height, Toast.LENGTH_SHORT).show();
+        });
 
 
 
